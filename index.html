@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body onload="checkFileAPI();">
+    <h1>CONVERT DOC TO IMAGE</h1>
+    <div id="container">
+        <input type="file" onchange='readText(this)' />
+        <br/>
+        <hr/>
+        <h3>Contents of the Text file:</h3>
+        <div id="main">
+        </div>
+    </div>
+    <div id="de"></div>
+    <div id="da"></div>
+    <script src="convert.js"></script>
+</body>
+
+</html>

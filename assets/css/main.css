@@ -34,8 +34,6 @@ p.MsoNormal, li.MsoNormal, div.MsoNormal {
 	margin-bottom:.0001pt;
 	font-size:14.0pt;
 	font-family:"Times New Roman",serif;
-
-	
 }
 
 p.MsoNormal span {
@@ -69,4 +67,41 @@ div.WordSection1 {
 
 ul {
 	margin-bottom:0in;
+}
+
+.btn {
+	padding: 10px;
+	border-radius: 5px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.btn-success {
+	background: #5cb85c;
+	border: 1px solid #54b654;
+	color: white;
+}
+.btn-success:hover {
+	background: #4faa4f;
+	color: #333;
+}
+.btn-warning {
+	background: #ec971f;
+	border: 1px solid #dd8811;
+	color: white;
+}
+
+.btn-warning:hover {
+	background: #f5a83d;
+	color: #333;
+}
+
+.input-file {
+	/* width: 100%; */
+	border: 1px solid #ccc;
+	margin-right: 10px;
+	padding: 15px;
+}
+
+#result {
+	width: 650px;
 }

@@ -6,22 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body onload="checkFileAPI();">
-    <h1>CONVERT DOC TO IMAGE</h1>
+    <h1 style="text-align: center">CONVERT DOC TO IMAGE</h1>
     <div id="container">
-        <input type="file" onchange='readText(this)' />
-        <br/>
-        <hr/>
-        <h3>Contents of the Text file:</h3>
+        <input type="file" class="input-file" onchange='readText(this)'/><br/>
+        <hr style='margin: 15px 0'/>
+        <button type="button" class="btn btn-success" onclick='change2Canvas()'>Prepare Image To Upload</button>
+        <button type="button" class="btn btn-warning" onclick='uploadImage()'>Upload Image</button>
         <div id="main">
         </div>
     </div>
-    <div id="de"></div>
-    <div id="da"></div>
-    <script src="convert.js"></script>
+
+    <div id="result">
+    </div>
+    
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="html2canvas/dist/html2canvas.js"></script>
+    <script src="assets/js/convert.js"></script>
 </body>
 
 </html>

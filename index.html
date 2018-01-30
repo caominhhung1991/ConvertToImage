@@ -12,7 +12,13 @@
 <body onload="checkFileAPI();">
     <h1 style="text-align: center">CONVERT DOC TO IMAGE</h1>
     <div id="container">
-        <input type="file" class="input-file" onchange='readText(this)'/><br/>
+        <label for="html-file" class="label">FILE HTML: </label>
+        <input type="file" id="html-file" class="input-file" onchange='readText(this)'/> 
+        <br><br>
+
+        <label for="doc-file" class="label">FILE DOC:</label>
+        <input type="file" id="doc-file" class="input-file" onchange='uploadDocFile(this)'>
+        <br/>
         <hr style='margin: 15px 0'/>
         <button type="button" class="btn btn-success" onclick='change2Canvas()'>Prepare Image To Upload</button>
         <button type="button" class="btn btn-warning" onclick='uploadImage()'>Upload Image</button>

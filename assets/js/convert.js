@@ -7,6 +7,7 @@ let daEnd = `<p class=MsoNormal>Da-end</p>`;
 let listIdDeDa = [];
 var json = [];
 let fileNameUploaded = '';
+let fileNameDocUploaded = '';
 
 function checkFileAPI() {
 	if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -34,6 +35,27 @@ function readText(filePath) {
 	return true;
 }
 
+function uploadDocFile(filePath) {
+	if (filePath.files && filePath.files[0]) {
+		fileNameDocUploaded = filePath.files[0].name.split('.')[0];
+		let file = filePath.files[0];
+
+		let formData = new FormData();
+		formData.append(fileNameDocUploaded, file, file.name);
+
+		jQuery.ajax({
+			url: '/upload/photos',
+			type: "POST",
+			data: formData,
+			contentType: false,
+			processData: false,
+			success: function (res) {
+				alert('Upload Doc File Success!')
+			}
+		});
+	}
+}
+
 function convert(output) {
 	var content = output.replace(/\n+/g, ' ')
 	// content = content.replace(/>\s*</g, '><');
@@ -43,18 +65,18 @@ function convert(output) {
 	var exec4 = getIndices(content, daEnd);
 
 	for (let i = 0; i < exec1.length; i++) {
-		listIdDeDa.push(`cau${i+1}-de${i+1}`);
-		listIdDeDa.push(`cau${i+1}-da${i+1}`);
+		listIdDeDa.push(`cau${i + 1}-de`);
+		listIdDeDa.push(`cau${i + 1}-da`);
 
 		let tamDe = content.slice(exec1[i] + deBegin.length, exec2[i])
 		document.getElementById('result').innerHTML += `
-			<div id='cau${i+1}-de${i+1}'>
+			<div id='cau${i + 1}-de'>
 				${tamDe}
 			</div>
 		`
 		let tamDa = content.slice(exec3[i] + deBegin.length, exec4[i])
 		document.getElementById('result').innerHTML += `
-			<div id='cau${i+1}-da${i+1}'>
+			<div id='cau${i + 1}-da'>
 				${tamDa}
 			</div>
 		`
@@ -76,16 +98,16 @@ function getIndices(haystack, needle) {
 
 // Func change html by DIV to Canvas and convert to Blob
 function change2Canvas() {
-	for(let item of listIdDeDa) {
+	for (let item of listIdDeDa) {
 		html2canvas(document.getElementById(item))
-		.then(canvas => {
-			changeCanvas2Blob(canvas, `${item}.png`);
-		})
+			.then(canvas => {
+				changeCanvas2Blob(canvas, `${item}.png`);
+			})
 	}
 }
 // Convert canvas type to File type (Blob)
 function changeCanvas2Blob(canvas, name) {
-	
+
 	let item = {
 		canvas: null,
 		blob: null
@@ -102,22 +124,22 @@ function changeCanvas2Blob(canvas, name) {
 
 function uploadImage() {
 	var formData = new FormData();
-	for(let item of json) {
+	for (let item of json) {
 		let file = item.blob;
 		formData.append(fileNameUploaded, file, file.name);
 	}
-	
+
 	jQuery.ajax({
 		url: '/upload/photos',
 		type: "POST",
 		data: formData,
 		contentType: false,
-		processData: false, 
-		success: function(res) {
+		processData: false,
+		success: function (res) {
 			// alert('Upload Success!')
 		}
 	});
 	$('#result').html(`
-		<h2>Upload Success!</h2>
+		<h2>Upload Images Success!</h2>
 	`)
 }

@@ -1,4 +1,5 @@
 const express = require('express');
+const childProc = require('child_process');
 const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
@@ -39,6 +40,8 @@ app.set('port', port);
 const server = http.createServer(app);
 
 server.listen(port, () => {
+    let url = 'http://localhost:3000';
+    childProc.spawn('C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe', ['-new-tab', url]);
     console.log(`Running on localhost - :${port}`);
 });
 

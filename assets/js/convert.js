@@ -105,6 +105,7 @@ function change2Canvas() {
 			})
 	}
 }
+
 // Convert canvas type to File type (Blob)
 function changeCanvas2Blob(canvas, name) {
 
@@ -139,6 +140,7 @@ function uploadImage() {
 			// alert('Upload Success!')
 		}
 	});
+
 	$('#result').html(`
 		<h2>Upload Images Success!</h2>
 	`)

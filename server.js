@@ -41,7 +41,7 @@ const server = http.createServer(app);
 
 server.listen(port, () => {
     let url = 'http://localhost:3000';
-    childProc.spawn('C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe', ['-new-tab', url]);
+    childProc.spawn('C:\\Program Files\\Mozilla Firefox\\firefox.exe', ['-new-tab', url]);
     console.log(`Running on localhost - :${port}`);
 });
 

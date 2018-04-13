@@ -33,15 +33,17 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-//Set Port
+// Set Port
 const port = process.env.PORT || '3000';
 app.set('port', port);
 
 const server = http.createServer(app);
+let firefox = 'C:\\Program Files\\Mozilla Firefox\\firefox.exe';
+let chrome = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe';
 
 server.listen(port, () => {
     let url = 'http://localhost:3000';
-    childProc.spawn('C:\\Program Files\\Mozilla Firefox\\firefox.exe', ['-new-tab', url]);
+    childProc.spawn(chrome, ['-new-tab', url]);
     console.log(`Running on localhost - :${port}`);
 });
 
